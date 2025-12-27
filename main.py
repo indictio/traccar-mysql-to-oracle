@@ -2,7 +2,12 @@ import mysql.connector as mysql
 import oracledb as oracle
 import config
 import sys
+from dotenv import load_dotenv
 import os
+
+
+load_dotenv()
+
 
 """
 1. open mysql
@@ -17,10 +22,10 @@ import os
 
 # open db mysql
 mys_db = mysql.connect(
-  host=config.mysql_host,
-  user=config.mysql_user,
-  password=config.mysql_password,
-  database=config.mysql_database
+  host=os.environ["MYSQL_HOST"],
+  user=os.environ["MYSQL_USER"],
+  password=os.environ["MYSQL_PASSWORD"],
+  database=os.environ["MYSQL_DATABASE"]
 )
 
 mys_cursor = mys_db.cursor()
@@ -28,7 +33,7 @@ mys_cursor = mys_db.cursor()
 # open db oracle
 os.environ["NLS_LANG"] = "AMERICAN_AMERICA.AL32UTF8"
 ora_db = oracle.connect(
-  dsn=config.ora_dns
+  dsn=os.environ["ORA_DNS"]
 )
 
 ora_cursor = ora_db.cursor()
