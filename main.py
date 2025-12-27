@@ -4,6 +4,17 @@ import config
 import sys
 import os
 
+"""
+1. open mysql
+2. open oracle
+3. sync devices
+4. sync positions
+
+
+98. close mysql
+99. close oracle
+"""
+
 # open db mysql
 mys_db = mysql.connect(
   host=config.mysql_host,
